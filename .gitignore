@@ -1,0 +1,23 @@
+# JavaScript
+node_modules/
+/package-lock.json
+# present in initial commit for PoC, uncomment in subsequent commits dist/
+DS_Store
+npm*
+yarn*
+
+# Golang
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+*.tmp
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
