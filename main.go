@@ -7,14 +7,12 @@ import (
 )
 
 func main() {
-	var entry string
-	var static string
-	var port string
+	var html string
+	var webpack string
 
-	flag.StringVar(&entry, "entry", "./index.html", "the entrypoint to serve.")
-	flag.StringVar(&static, "static", ".", "the directory to serve static files from.")
-	flag.StringVar(&port, "port", "8000", "the `port` to listen on.")
+	flag.StringVar(&html, "html", "./index.html", "the path of the html to serve.")
+	flag.StringVar(&webpack, "webpack", ".", "the directory to serve the webpack bundle from.")
 	flag.Parse()
 
-	server.Run(entry, static, port)
+	server.Run(html, webpack)
 }
