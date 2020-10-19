@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
+	var env string
 	var html string
 	var webpack string
-
-	flag.StringVar(&html, "html", "./index.html", "the path of the html to serve.")
-	flag.StringVar(&webpack, "webpack", ".", "the directory to serve the webpack bundle from.")
+	flag.StringVar(&env, "env", "dev", "the environment to run in: dev | prod ")
+	flag.StringVar(&html, "html", "./index.html", "the path of index.html to serve.")
+	flag.StringVar(&webpack, "webpack", ".", "the path to webpack bundle's dir.")
 	flag.Parse()
-
-	server.Run(html, webpack)
+	server.Run(env, html, webpack)
 }
