@@ -1,2 +1,13 @@
 # JavaScript
 node_modules/
+
+.editorconfig
+.git
+LICENSE
+Makefile
+README.md
+arm/
+powerpc/
+mips/
+.eslint*
+.prettier*
