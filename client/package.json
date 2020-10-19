@@ -4,7 +4,8 @@
   "description": "React SPA served either by webpack-dev-server or Golang webserver.",
   "main": "index.js",
   "scripts": {
-    "build-client": "webpack --config webpack.config.build.js",
+    "build-client": "webpack --config webpack.config.build.local.js",
+    "build-client-docker": "webpack --config webpack.config.build.docker.js",
     "start-client": "webpack serve --hot --mode development --config webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,5 +1,7 @@
 # JavaScript
 node_modules/
+webpack.config.dev.js
+
 
 .editorconfig
 .git
