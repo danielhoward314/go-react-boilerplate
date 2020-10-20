@@ -4,13 +4,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const baseConfig = require('./webpack.config')
 const devServerPort = 3000
+// references to go-server below correspond to links alias in spa service of docker-compose.dev.yml
+const goServerContainerHost = 'http://go-server:8080'
 const proxyHeaders = {
   'x-forwarded-proto': 'http',
   'x-forwarded-port': devServerPort,
-  'host': '127.0.0.1'
+  'host': 'go-server'
 }
+/*
+'0.0.0.0' and '0.0.0.0' NO
+'0.0.0.0' and 'localhost' NO
+'0.0.0.0' and 'server' NO
+server and server NOD
 
-module.exports = merge(baseConfig, {
+*/
+const configObj = merge(baseConfig, {
   mode: 'development',
   output: {
     filename: './bundle.js',
@@ -19,11 +27,12 @@ module.exports = merge(baseConfig, {
   devServer: {
     port: devServerPort,
     publicPath: '/',
+    host: '0.0.0.0',
     contentBase: path.join(__dirname, 'static'),
     hot: true,
     quiet: false,
     proxy: {
-      '/api/**': { target: 'http://localhost:8080', secure: false, headers: proxyHeaders }
+      '/api/**': { target: goServerContainerHost, changeOrigin: true, secure: false, headers: proxyHeaders }
     }
   },
   watchOptions: {
@@ -40,3 +49,5 @@ module.exports = merge(baseConfig, {
     })
   ]
 })
+console.log(configObj)
+module.exports = configObj

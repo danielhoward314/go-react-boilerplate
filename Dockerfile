@@ -14,9 +14,7 @@ WORKDIR /webApp
 COPY ["./client/package.json", "./client/package-lock.json", "./"]
 RUN npm install
 COPY ["./client", "./"]
-RUN echo Before Build && ls
 RUN npm run build-client-docker
-RUN echo After Build && ls
 
 # 3. Start from scratch image and add results of previous stages
 FROM scratch
