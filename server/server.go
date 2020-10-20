@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -10,7 +11,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func Run(env, html, webpack string) {
+func Run(port int, env, html, webpack string) {
 
 	r := mux.NewRouter()
 	r.Use(middleware.LoggingMiddleware)
@@ -26,10 +27,11 @@ func Run(env, html, webpack string) {
 	}
 
 	r.Use(mux.CORSMethodMiddleware(r))
+	portStr := fmt.Sprintf(":%d", port)
 
 	srv := &http.Server{
 		Handler: r,
-		Addr:    ":8080",
+		Addr:    portStr,
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,

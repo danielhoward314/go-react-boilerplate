@@ -10,4 +10,4 @@ FROM scratch
 WORKDIR /app
 COPY --from=goBuilder /go-react-boilerplate /app/go-react-boilerplate
 EXPOSE 8080
-ENTRYPOINT ["/app/go-react-boilerplate", "-env=dev"]
+ENTRYPOINT ["/app/go-react-boilerplate", "-env=dev", "-port=8080"]

@@ -15,3 +15,6 @@
 *.out
 
 .env
+
+# Gin hot reloader output
+gin-bin

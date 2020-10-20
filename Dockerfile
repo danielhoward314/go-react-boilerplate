@@ -23,4 +23,4 @@ COPY --from=goBuilder /go-react-boilerplate /app/go-react-boilerplate
 COPY --from=nodeBuilder /dist /app/dist
 EXPOSE 8080
 ENTRYPOINT ["/app/go-react-boilerplate", "-html=/app/dist/index.html", "-webpack=/app/dist/js/"]
-CMD ["-env=prod"]
+CMD ["-env=prod", "-port=8080"]

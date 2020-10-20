@@ -11,13 +11,7 @@ const proxyHeaders = {
   'x-forwarded-port': devServerPort,
   'host': 'go-server'
 }
-/*
-'0.0.0.0' and '0.0.0.0' NO
-'0.0.0.0' and 'localhost' NO
-'0.0.0.0' and 'server' NO
-server and server NOD
 
-*/
 const configObj = merge(baseConfig, {
   mode: 'development',
   output: {
