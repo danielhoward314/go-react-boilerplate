@@ -21,6 +21,6 @@ FROM scratch
 WORKDIR /app
 COPY --from=goBuilder /go-react-boilerplate /app/go-react-boilerplate
 COPY --from=nodeBuilder /dist /app/dist
-EXPOSE 8080
+EXPOSE 80
 ENTRYPOINT ["/app/go-react-boilerplate", "-html=/app/dist/index.html", "-webpack=/app/dist/js/"]
-CMD ["-env=prod", "-port=8080"]
+CMD ["-env=prod", "-port=80"]
