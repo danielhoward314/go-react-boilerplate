@@ -11,7 +11,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /go-react-boilerplate -a -tags netgo -l
 # 2. Build webpack bundle of React SPA
 FROM node:alpine as nodeBuilder
 WORKDIR /webApp
-COPY ["./client/package.json", "./client/package-lock.json", "./"]
+COPY ["./client/package.json", "./"]
 RUN npm install
 COPY ["./client", "./"]
 RUN npm run build-client-docker
