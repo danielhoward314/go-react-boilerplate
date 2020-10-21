@@ -1,0 +1,39 @@
+
+version: 2
+jobs:
+  build:
+    parameters:
+      modules:
+          type: boolean
+          default: true
+    docker:
+    - image: circleci/golang:1.15
+    - image: circleci/node:12.19
+      auth:
+          # Change to your Docker Hub username
+          username: danielhoward314
+          # CircleCI environment variable
+          password: $DOCKERHUB_PASSWORD
+    # Change next line
+    working_directory: /go/src/github.com/danielhoward314/go-react-boilerplate
+    environment:
+      GO111MODULE: "on"
+    steps:
+    - checkout
+    - run: echo "starting build"
+    - run:
+        name: "Fetch dependencies"
+        command: >
+          if [[ << parameters.modules >> = true ]]; then
+            go mod download
+            export GO111MODULE=on
+          else
+            go get -v ./...
+          fi
+    - setup_remote_docker:
+        docker_layer_caching: true
+    - run:
+        name: build and push Docker images
+        shell: /bin/bash
+        command: |
+          make build && make push
