@@ -2,10 +2,6 @@
 version: 2
 jobs:
   build:
-    parameters:
-      modules:
-          type: boolean
-          default: true
     docker:
     - image: circleci/golang:1.15
     - image: circleci/node:12.19
@@ -24,12 +20,8 @@ jobs:
     - run:
         name: "Fetch dependencies"
         command: >
-          if [[ << parameters.modules >> = true ]]; then
-            go mod download
-            export GO111MODULE=on
-          else
-            go get -v ./...
-          fi
+          go mod download
+          export GO111MODULE=on
     # following two lines not available on CircleCI free plan; uncomment if you upgrade
     # - setup_remote_docker:
     #     docker_layer_caching: true
