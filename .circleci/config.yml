@@ -19,9 +19,8 @@ jobs:
     - run: echo "starting build"
     - run:
         name: "Fetch dependencies"
-        command: >
-          go mod download
-          export GO111MODULE=on
+        command: |
+          go get -v ./...
     # following two lines not available on CircleCI free plan; uncomment if you upgrade
     # - setup_remote_docker:
     #     docker_layer_caching: true
