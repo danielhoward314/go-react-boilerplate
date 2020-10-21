@@ -1,5 +1,13 @@
 
 version: 2
+
+anchors:
+  context: &context
+    context: secrets
+    filters:
+        branches:
+          only: master
+
 jobs:
   build:
     docker:
@@ -21,9 +29,9 @@ jobs:
         name: "Fetch dependencies"
         command: |
           go get -v ./...
-    # following two lines not available on CircleCI free plan; uncomment if you upgrade
-    # - setup_remote_docker:
-    #     docker_layer_caching: true
+    # following two lines not available on CircleCI free plan
+    - setup_remote_docker:
+        docker_layer_caching: true
     - run:
         name: build and push Docker images
         shell: /bin/bash

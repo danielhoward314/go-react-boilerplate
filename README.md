@@ -3,7 +3,7 @@
 ## Golang API and Web Server for React SPA
 
 ### Motivation & Design
-<p>Many boilerplates exist for serving up a React/Vue/Angular SPA with Express, but I haven't seen many with Go acting as the webserver. With this project I hope to give other developers a good starting point.</p><p>I designed this app with an eye toward use within a microservice architecture. The Go webserver serves up the webpack bundle of the React SPA. Any XHR requests should hit this Go API server and get forwarded to an API Gateway, which would perform cross-cutting concerns (load balancing, rate limiting, distributed tracing, APM, etc.) and route the calls to a fleet of microservices.</p>
+<p>Many boilerplates exist for serving up a React/Vue/Angular SPA with Express, but I haven't seen many with Go acting as the webserver. With this project I hope to give other developers a good starting point.</p><p>I designed this app with an eye toward use within a microservice architecture. The Go webserver serves up the webpack bundle of the React SPA. Any XHR requests should hit this app's Go API server and get forwarded to an API Gateway, which would perform cross-cutting concerns (load balancing, rate limiting, distributed tracing, APM, etc.) and route the calls to a fleet of microservices. Long-running workloads could get triggered through messaging systems (Kafka, RabbitMQ, SQS, NATS, etc.) and run asynchronously.</p>
 
 ### Goals
 <ol><h3>This app can: </h3>
@@ -80,11 +80,11 @@ Prerequisites for non-Dockerized version:
   </li>
 </ol>
 
-# Deployment
+# Manual Deployment & CI/CD
 
 ### Manual Docker Push
 
-Assumes Docker Hub as registry, though principles are the same for other registries. If you've logged into Docker hub from the command line, Docker Desktop should have generated a `~/.docker/config.json` file with base64 encoded credentials. If you run into Docker Hub auth issues, [this article can help](https://mesosphere.github.io/marathon/docs/native-docker-private-registry.html).
+Assumes Docker Hub as registry, though principles are the same for other registries. If you've logged into Docker Hub from the command line, Docker Desktop should have generated a `~/.docker/config.json` file with base64 encoded credentials. If you run into Docker Hub auth issues, [this article can help](https://mesosphere.github.io/marathon/docs/native-docker-private-registry.html).
 
 Edit the IMAGE_TAG var in the Makefile to point to your Docker Hub repo.
 
@@ -92,10 +92,13 @@ Edit the IMAGE_TAG var in the Makefile to point to your Docker Hub repo.
 make build && make push
 ```
 
+You should have a built and tagged image, which you can manaully deploy to the container service of a cloud provider. Though it is out of scope for this README to outline the manual version of these steps, the following sections outline an automated CI/CD pipeline to deploy to EKS.
+
 ### CI with CircleCI
 
+<p>Note that below steps require upgrading CircleCI plan, since the CI process needs access to the Docker daemon, a Performance plan and higher feature. If you don't want to use CircleCI for this reason, delete the `.circleci` directory and set up another CI pipeline of your choice.
 <ol>
   <li>Sign up for CircleCI and link your source control repo in its UI.</li>
-  <li>Set up a `DOCKERHUB_PASSWORD` secret in CircleCI.</li>
+  <li>Set up a `DOCKERHUB_PASSWORD` environment variable in CircleCI.</li>
   <li>Edit the `.circleci/config.yml` file as instructed by the comments.</li>
 
