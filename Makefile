@@ -1,9 +1,9 @@
 .DEFAULT_GOAL := help
 SHA := latest
-TAG := another-test
+TAG := latest
 
 ## Change next line to push to your Docker registry
-IMAGE_TAG := registry.hub.docker.com/repositories/danielhoward314/go-react-boilerplate
+IMAGE_TAG := danielhoward314/go-react-boilerplate
 
 build: ## Build the docker container and tag as latest
 	docker build -t ${IMAGE_TAG}:${TAG} .

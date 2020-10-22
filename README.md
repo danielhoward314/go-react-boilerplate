@@ -96,7 +96,7 @@ You should have a built and tagged image, which you can manaully deploy to the c
 
 ### CI with CircleCI
 
-<p>Note that below steps require upgrading CircleCI plan, since the CI process needs access to the Docker daemon, a Performance plan and higher feature. If you don't want to use CircleCI for this reason, delete the `.circleci` directory and set up another CI pipeline of your choice.
+<p>Note that below steps require upgrading CircleCI plan, since the CI process needs access to the Docker daemon, a Performance plan (or higher) feature. If you don't want to use CircleCI for this reason, delete the `.circleci` directory and set up another CI pipeline of your choice.
 <ol>
   <li>Sign up for CircleCI and link your source control repo.</li>
   <li>Set up `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD` environment variables in CircleCI.</li>
