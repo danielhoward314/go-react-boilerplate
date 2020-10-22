@@ -14,8 +14,8 @@ jobs:
     - image: circleci/golang:1.15
     - image: circleci/node:12.19
       auth:
-          # Change to your Docker Hub username
-          username: danielhoward314
+          # CircleCI environment variable
+          username: $DOCKERHUB_USERNAME
           # CircleCI environment variable
           password: $DOCKERHUB_PASSWORD
     # Change next line
