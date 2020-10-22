@@ -24,7 +24,7 @@ jobs:
       GO111MODULE: "on"
     steps:
     - checkout
-    - run: echo $DOCKERHUB_USERNAME
+    - run: echo "$DOCKERHUB_USERNAME"
     - run:
         name: "Fetch dependencies"
         command: |
@@ -33,8 +33,11 @@ jobs:
     - setup_remote_docker:
         docker_layer_caching: true
     - run:
-        name: build and push Docker images to Docker Hub
-        shell: /bin/bash
+        name: build image
         command: |
-          echo "$DOCKERHUB_PASSWORD" | docker login -e "$DOCKERHUB_EMAIL" -u "$DOCKERHUB_USERNAME" --password-stdin hub.docker
-          make build && make push
+          make build
+    - run:
+        name: push image to Docker Hub
+        command: |
+          echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
+          make push
