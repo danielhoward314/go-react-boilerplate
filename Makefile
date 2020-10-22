@@ -2,7 +2,7 @@
 SHA := latest
 TAG := latest
 
-## Change next line to push to your Docker registry
+## Change to your Docker Hub repo <username>/<repo-name> (prepend with registry url if not Docker Hub)
 IMAGE_TAG := danielhoward314/go-react-boilerplate
 
 build: ## Build the docker container and tag as latest
