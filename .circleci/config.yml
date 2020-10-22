@@ -32,8 +32,11 @@ jobs:
     # following two lines not available on CircleCI free plan
     - setup_remote_docker:
         docker_layer_caching: true
-    - run:
-        name: build and push Docker images
-        shell: /bin/bash
-        command: |
-          make build && make push
+    - run: |
+         echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
+         make build && make push
+    # - run:
+    #     name: build and push Docker images
+    #     shell: /bin/bash
+    #     command: |
+    #       make build && make push
