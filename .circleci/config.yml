@@ -22,10 +22,9 @@ jobs:
     working_directory: /go/src/github.com/danielhoward314/go-react-boilerplate
     environment:
       GO111MODULE: "on"
-      TEST: $DOCKERHUB_USERNAME
     steps:
     - checkout
-    - run: echo $TEST
+    - run: echo $DOCKERHUB_USERNAME
     - run:
         name: "Fetch dependencies"
         command: |
@@ -37,5 +36,5 @@ jobs:
         name: build and push Docker images to Docker Hub
         shell: /bin/bash
         command: |
-          echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          echo "$DOCKERHUB_PASSWORD" | docker login -e "$DOCKERHUB_EMAIL" -u "$DOCKERHUB_USERNAME" --password-stdin hub.docker
           make build && make push
