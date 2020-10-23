@@ -101,4 +101,6 @@ You should have a built and tagged image, which you can manaully deploy to the c
   <li>Sign up for CircleCI and link your source control repo.</li>
   <li>Set up `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD` environment variables in CircleCI.</li>
   <li>Edit the `.circleci/config.yml` file as instructed by the comments.</li>
+<ol>
 
+### CD with ArgoCD
