@@ -9,5 +9,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /go-react-boilerplate -a -tags netgo -l
 FROM scratch
 WORKDIR /app
 COPY --from=goBuilder /go-react-boilerplate /app/go-react-boilerplate
-EXPOSE 8080
-ENTRYPOINT ["/app/go-react-boilerplate", "-env=dev", "-port=8080"]
+EXPOSE 3001
+ENTRYPOINT ["/app/go-react-boilerplate", "-env=dev", "-port=3001"]

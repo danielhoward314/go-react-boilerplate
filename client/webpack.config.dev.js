@@ -23,7 +23,7 @@ module.exports = merge(baseConfig, {
     hot: true,
     quiet: false,
     proxy: {
-      '/api/**': { target: 'http://localhost:8080', secure: false, headers: proxyHeaders }
+      '/api/**': { target: 'http://localhost:3001', secure: false, headers: proxyHeaders }
     }
   },
   watchOptions: {

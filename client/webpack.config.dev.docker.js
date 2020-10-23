@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.config')
 const devServerPort = 3000
 // references to go-server below correspond to links alias in spa service of docker-compose.dev.yml
-const goServerContainerHost = 'http://go-server:8080'
+const goServerContainerHost = 'http://go-server:3001'
 const proxyHeaders = {
   'x-forwarded-proto': 'http',
   'x-forwarded-port': devServerPort,

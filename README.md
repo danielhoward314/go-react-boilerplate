@@ -45,7 +45,7 @@ Prerequisites for non-Dockerized version:
   go get
   cd client && npm install
   cd ..
-  go run main.go -env=dev -port=8080 & cd client && npm run start-client
+  go run main.go -env=dev -port=3001 & cd client && npm run start-client
   ```
 
   ...and go to `http://localhost:3000` to see the React app, and open the console to see a succesful XHR call proxied to the Go API.
@@ -53,14 +53,14 @@ Prerequisites for non-Dockerized version:
   <li>For method (2), run the following (assumes already ran `go get and npm install` as above):
 
   ```
-  go run main.go -env=prod -port=8080 -html=$(PWD)/client/dist/index.html -webpack=$(PWD)/client/dist/js/
+  go run main.go -env=prod -port=3001 -html=$(PWD)/client/dist/index.html -webpack=$(PWD)/client/dist/js/
 
   // in another terminal tab
   cd client
   npm run build-client
   ```
 
-  ...and go to `http://localhost:8080` to see the same results as (1), except these are all coming from the Go server rather than from webpack-dev-server and Go server separately.
+  ...and go to `http://localhost:3001` to see the same results as (1), except these are all coming from the Go server rather than from webpack-dev-server and Go server separately.
   </li>
     <li>For method (3), run the following...
 
@@ -76,7 +76,7 @@ Prerequisites for non-Dockerized version:
   docker-compose up --build
   ```
 
-  ...and go to `http://localhost:80`.
+  ...and go to `http://localhost:3001`.
   </li>
 </ol>
 

@@ -19,7 +19,7 @@ spec:
         image: danielhoward314/go-react-boilerplate:0.0.1
         ports:
           # Should match the port number that the Go application listens on
-          - containerPort: 80
+          - containerPort: 3001
 ---
 apiVersion: v1
 kind: Service
@@ -33,6 +33,6 @@ spec:
   - name: http
     port: 9000
     # port is what you'll type into browser, targetPort and containerPort should match
-    targetPort: 80
+    targetPort: 3001
   selector:
     app: go-react-app
