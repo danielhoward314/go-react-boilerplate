@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-react-boilerplate
+  namespace: go-react-app
+spec:
+  selector:
+    matchLabels:
+      app: go-react-boilerplate
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: go-react-boilerplate
+    spec:
+      containers:
+      - name: go-react-boilerplate
+        imagePullPolicy: Always
+        image: danielhoward314/go-react-boilerplate:${ARGOCD_APP_REVISION}
+        ports:
+          # Should match the port number that the Go application listens on
+          - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-react-boilerplate-service
+  namespace: go-react-app
+  # annotations:
+  #   external-dns.alpha.kubernetes.io: domain.com
+spec:
+  selector:
+    app: nginx
+  ports:
+    - port: 80

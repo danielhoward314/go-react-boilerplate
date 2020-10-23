@@ -24,7 +24,6 @@ jobs:
       GO111MODULE: "on"
     steps:
     - checkout
-    - run: echo "$DOCKERHUB_USERNAME"
     - run:
         name: "Fetch dependencies"
         command: |
