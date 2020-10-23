@@ -32,6 +32,7 @@ spec:
   ports:
   - name: http
     port: 9000
-    targetPort: 3000
+    # port is what you'll type into browser, targetPort and containerPort should match
+    targetPort: 80
   selector:
     app: go-react-app
