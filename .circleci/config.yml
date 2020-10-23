@@ -36,7 +36,7 @@ jobs:
         # Change the tag to your Docker Hub repo <username>/<repo-name>
         # $CIRCLE_SHA1 is a default environment variable in CircleCI
         command: |
-          docker build -t danielhoward314/go-react-boilerplate:$CIRCLE_SHA1 .
+          docker build -t danielhoward314/go-react-boilerplate:0.0.1 .
     - run:
         name: push image to Docker Hub
         # Change the tag to your Docker Hub repo <username>/<repo-name>

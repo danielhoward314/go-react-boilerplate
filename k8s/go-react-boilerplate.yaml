@@ -16,7 +16,7 @@ spec:
       containers:
       - name: go-react-boilerplate
         imagePullPolicy: Always
-        image: danielhoward314/go-react-boilerplate:${ARGOCD_APP_REVISION}
+        image: danielhoward314/go-react-boilerplate:0.0.1
         ports:
           # Should match the port number that the Go application listens on
           - containerPort: 80
