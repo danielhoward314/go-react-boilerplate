@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-react-boilerplate
-  namespace: go-react-app
+  # namespace: go-react-app
 spec:
   selector:
     matchLabels:
