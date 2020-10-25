@@ -12,15 +12,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
-        <h3>Proof of concept(stage two): </h3>
-        <ul>
-          <li>created a React SPA app;</li>
-          <li>app runs on webpack-dev-server;</li>
-          <li>api calls get proxied to go server's endpoints;</li>
-          <li>go server configured to enable CORS from SPA origin;</li>
-        </ul>
-      </div>
+      <div>A blank canvas</div>
     )
   }
 }
